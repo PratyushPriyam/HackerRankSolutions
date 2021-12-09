@@ -1,0 +1,16 @@
+SELECT C.Company_Code, C.Founder,
+COUNT(DISTINCT LM.Lead_Manager_Code),
+COUNT(DISTINCT SM.Senior_Manager_Code),
+COUNT(DISTINCT M.Manager_Code),
+COUNT(DISTINCT E.Employee_Code)
+FROM Company AS C,
+Lead_Manager AS LM,
+Senior_Manager AS SM,
+Manager AS M,
+Employee AS E
+WHERE C.Company_Code = LM.Company_Code AND
+LM.Lead_Manager_Code = SM.Lead_Manager_Code AND
+SM.Senior_Manager_Code = M.Senior_Manager_Code AND
+M.Manager_Code = E.Manager_Code
+GROUP BY C.Company_Code, C.Founder
+ORDER BY C.Company_Code;
