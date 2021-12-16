@@ -1,0 +1,4 @@
+/*
+Enter your query here.
+*/
+select ROUND(LAT_N,4) from (SELECT LAT_N FROM STATION ORDER BY 1 asc LIMIT 250) s ORDER BY 1 DESC LIMIT 1
