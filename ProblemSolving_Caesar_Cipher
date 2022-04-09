@@ -20,17 +20,32 @@ class Result {
      *  1. STRING s
      *  2. INTEGER k
      */
-//------------------------------------------------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
     public static String caesarCipher(String s, int k) {
     // Write your code here
         String sb = "";
+        k = k % 26;
         for(int i=0; i<s.length(); i++) {
             char ch = s.charAt(i);
             char char_ch = 0;
-            if(Character.isLetter(ch) == true) {
-                int int_ch = ((int)ch + 2)%26;
-                char_ch = (char)int_ch;
-                sb += char_ch;    
+            if(Character.isAlphabetic(ch) == true) {
+                int int_ch = (int)ch; 
+                if(int_ch >= 65 && int_ch <= 90) {
+                    int_ch = (int_ch + k);
+                    if(int_ch > 90) {
+                        int_ch -= 26;
+                    }
+                    sb += (char)int_ch; 
+                }
+                if(int_ch >= 97 && int_ch <= 122) {
+                    int_ch = (int_ch + k);
+                    if(int_ch > 122) {
+                        int_ch -= 26;
+                    }
+                    sb += (char)int_ch;
+                }
             }
             else {
                 sb += ch;
@@ -41,7 +56,7 @@ class Result {
 
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------
 
 public class Solution {
     public static void main(String[] args) throws IOException {
