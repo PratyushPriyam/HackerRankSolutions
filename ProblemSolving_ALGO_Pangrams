@@ -19,37 +19,28 @@ class Result {
      * The function accepts STRING s as parameter.
      */
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public static String pangrams(String s) {
     // Write your code here
-        String s_upper = s.toUpperCase();
-        String soln = "";
-        int i = 65;
-        int len = 0;
-        String pana = "";
-        while(len<s.length()) {
-            if((char)i == s_upper.charAt(len)) {
-                i++;
-                pana += s_upper.charAt(len);
-                len = 0;
-            }
-            else {
-                len++;
-            }
+        String str = s.toLowerCase(); // Changed string must be stored in a variable.
+        Set<Character> num = new HashSet<Character>();
+        for(int i=0; i<str.length(); i++) {
+            num.add(str.charAt(i));
         }
-        if(pana.charAt(pana.length() - 1) == 'Z') {
-            soln = "pangram";
+        System.out.println(num);
+        System.out.println(str);
+        if(num.size() == 27) { // 27 because space is also being taken into consideration.
+            return "pangram";
         }
-        else{
-            soln = "not pangram";
+        else {
+            return "not pangram";
         }
-        //return pana;
-        return soln;
     }
+
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 public class Solution {
     public static void main(String[] args) throws IOException {
